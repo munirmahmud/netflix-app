@@ -1,0 +1,21 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 999;
+    transition: all 0.4s ;   
+}
+.navbar.active {
+    background-color: #111;
+    height: 30px;
+}
+.nav__logo {
+    width: 120px;
+    object-fit: contain;
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
+}

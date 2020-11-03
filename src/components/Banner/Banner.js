@@ -24,8 +24,6 @@ const Banner = ({ fetchUrl }) => {
         return (str?.length > n) ? str.substr(0, n - 1) + '&hellip;' : str;
     }
 
-    console.log(movies);
-
     return (
         <header className="banner" style={{backgroundImage: `url("${baseUrl}${movies.backdrop_path}")`}}>
             <div className="banner__contents">
@@ -35,9 +33,7 @@ const Banner = ({ fetchUrl }) => {
                     <button className="banner__button">My List</button> 
                 </div>
                 <p className="banner__description">{truncate(movies?.overview, 180)}</p>
-            </div>    
-
-            <div className="banner__fade" />      
+            </div>
         </header>
     )
 }
