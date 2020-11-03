@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../axios';
-import requests from '../../request';
 import './Banner.elements.css';
 
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
-const Banner = () => {
+const Banner = ({ fetchUrl }) => {
     const [movies, setMovies] = useState([]);
     
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(requests.fetchNetflixOriginals);
+            const request = await axios.get(fetchUrl);
             const randomMovies = request.data.results[
                 Math.floor(Math.random() * request.data.results.length - 1)
             ];
@@ -19,7 +18,11 @@ const Banner = () => {
             return request;
         }
         fetchData();
-    }, []);
+    }, [fetchUrl]);
+
+    function truncate(str, n) {
+        return (str?.length > n) ? str.substr(0, n - 1) + '&hellip;' : str;
+    }
 
     console.log(movies);
 
@@ -31,8 +34,10 @@ const Banner = () => {
                     <button className="banner__button">Play</button>
                     <button className="banner__button">My List</button> 
                 </div>
-                <p className="banner__description">{movies?.overview}</p>
-            </div>            
+                <p className="banner__description">{truncate(movies?.overview, 180)}</p>
+            </div>    
+
+            <div className="banner__fade" />      
         </header>
     )
 }

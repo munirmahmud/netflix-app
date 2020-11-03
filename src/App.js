@@ -6,9 +6,9 @@ import requests from "./request";
 
 const App = () => {
     return (
-        <div>
-            <Banner />
-            <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals} isLargeRow={true} />
+        <div className="app">
+            <Banner fetchUrl={requests.fetchNetflixOriginals} />
+            <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
             <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
             <Row title="Top Rated Movies" fetchUrl={requests.fetchTopRated} />
             <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
